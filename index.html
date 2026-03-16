@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Applendit — Mobile Developer</title>
+  <meta name="description" content="Applendit is an independent mobile app developer creating useful, clean apps for Android and iOS." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #f9f8f6;
+      --surface: #ffffff;
+      --text: #1a1918;
+      --muted: #6b6862;
+      --subtle: #b8b4ad;
+      --border: #e4e0d8;
+      --accent: #1a1918;
+      --accent-soft: #f0ede8;
+      --font: 'DM Sans', sans-serif;
+      --mono: 'DM Mono', monospace;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--text);
+      font-size: 16px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 2rem;
+      height: 60px;
+      background: rgba(249,248,246,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-family: var(--mono);
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 14px;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--text); }
+
+    /* SECTIONS */
+    section { padding: 7rem 2rem; max-width: 720px; margin: 0 auto; }
+
+    /* HERO */
+    #hero {
+      padding-top: 10rem;
+      padding-bottom: 6rem;
+    }
+
+    .hero-tag {
+      display: inline-block;
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      padding: 4px 12px;
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: clamp(2.4rem, 5vw, 3.6rem);
+      font-weight: 300;
+      line-height: 1.15;
+      letter-spacing: -0.03em;
+      margin-bottom: 1.5rem;
+      color: var(--text);
+    }
+
+    h1 em {
+      font-style: italic;
+      font-weight: 300;
+    }
+
+    .hero-sub {
+      font-size: 1.1rem;
+      color: var(--muted);
+      max-width: 480px;
+      margin-bottom: 2.5rem;
+      font-weight: 300;
+    }
+
+    .btn-group { display: flex; gap: 12px; flex-wrap: wrap; }
+
+    .btn {
+      display: inline-block;
+      padding: 10px 24px;
+      border-radius: 100px;
+      font-size: 14px;
+      font-weight: 400;
+      text-decoration: none;
+      transition: all 0.2s;
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn-primary {
+      background: var(--text);
+      color: var(--bg);
+    }
+    .btn-primary:hover { opacity: 0.85; }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+    .btn-outline:hover { background: var(--accent-soft); }
+
+    /* DIVIDER */
+    .divider {
+      width: 100%;
+      height: 1px;
+      background: var(--border);
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    /* ABOUT */
+    .section-label {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--subtle);
+      margin-bottom: 2rem;
+    }
+
+    h2 {
+      font-size: 1.9rem;
+      font-weight: 300;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.5rem;
+      line-height: 1.25;
+    }
+
+    .about-body p {
+      color: var(--muted);
+      font-weight: 300;
+      margin-bottom: 1rem;
+      font-size: 1.05rem;
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      margin-top: 2.5rem;
+    }
+
+    .info-cell {
+      background: var(--surface);
+      padding: 1.25rem 1.5rem;
+    }
+
+    .info-cell .label {
+      font-size: 11px;
+      font-family: var(--mono);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--subtle);
+      margin-bottom: 4px;
+    }
+
+    .info-cell .value {
+      font-size: 14px;
+      color: var(--text);
+      font-weight: 400;
+    }
+
+    /* CONTACT */
+    .contact-intro {
+      font-size: 1.05rem;
+      color: var(--muted);
+      font-weight: 300;
+      margin-bottom: 2.5rem;
+    }
+
+    form { display: flex; flex-direction: column; gap: 16px; }
+
+    .field-group { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+    label {
+      font-size: 13px;
+      color: var(--muted);
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    input, textarea {
+      width: 100%;
+      font-family: var(--font);
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--text);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 10px 14px;
+      outline: none;
+      transition: border-color 0.2s;
+      resize: vertical;
+    }
+
+    input:focus, textarea:focus { border-color: var(--muted); }
+
+    textarea { min-height: 120px; }
+
+    .btn-submit {
+      align-self: flex-start;
+      background: var(--text);
+      color: var(--bg);
+      border: none;
+      padding: 11px 28px;
+      border-radius: 100px;
+      font-family: var(--font);
+      font-size: 14px;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+    .btn-submit:hover { opacity: 0.8; }
+
+    .form-note {
+      font-size: 12px;
+      color: var(--subtle);
+      margin-top: 4px;
+    }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 760px;
+      margin: 0 auto;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-left {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--subtle);
+    }
+
+    .footer-right {
+      font-size: 12px;
+      color: var(--subtle);
+    }
+
+    .footer-right a {
+      color: var(--muted);
+      text-decoration: none;
+    }
+    .footer-right a:hover { color: var(--text); }
+
+    /* TOAST */
+    #toast {
+      position: fixed;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: var(--text);
+      color: var(--bg);
+      padding: 12px 24px;
+      border-radius: 100px;
+      font-size: 14px;
+      transition: transform 0.3s ease;
+      z-index: 999;
+      white-space: nowrap;
+    }
+    #toast.show { transform: translateX(-50%) translateY(0); }
+
+    /* ANIMATIONS */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 600px) {
+      nav { padding: 0 1.25rem; }
+      section { padding: 5rem 1.25rem; }
+      .field-group { grid-template-columns: 1fr; }
+      .info-grid { grid-template-columns: 1fr; }
+      h1 { font-size: 2.2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="#hero" class="nav-logo">applendit</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <section id="hero">
+    <div class="hero-tag">Independent Mobile Developer</div>
+    <h1>Apps built with<br /><em>care & clarity.</em></h1>
+    <p class="hero-sub">Applendit creates focused, well-crafted mobile applications for Android and iOS. Simple interfaces. Reliable performance.</p>
+    <div class="btn-group">
+      <a href="#contact" class="btn btn-primary">Get in touch</a>
+      <a href="#about" class="btn btn-outline">Learn more</a>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <section id="about">
+    <p class="section-label">About</p>
+    <h2>Hello, I'm Habil.</h2>
+    <div class="about-body fade-in">
+      <p>I'm an independent mobile app developer operating under the name <strong>Applendit</strong>. I focus on building apps that are intuitive and purposeful — software that gets out of the way and just works.</p>
+      <p>From concept to publication on Google Play and the App Store, I handle the full development lifecycle. Every app I release reflects a commitment to clean design and thoughtful user experience.</p>
+      <p>If you have a project in mind, an idea you'd like to explore, or a question about one of my apps, feel free to reach out.</p>
+    </div>
+
+    <div class="info-grid fade-in">
+      <div class="info-cell">
+        <div class="label">Developer</div>
+        <div class="value">Applendit</div>
+      </div>
+      <div class="info-cell">
+        <div class="label">Legal name</div>
+        <div class="value">Habil Gür</div>
+      </div>
+      <div class="info-cell">
+        <div class="label">Platform</div>
+        <div class="value">Google Play · App Store</div>
+      </div>
+      <div class="info-cell">
+        <div class="label">Email</div>
+        <div class="value"><a href="mailto:applendit@gmail.com" style="color:inherit;">applendit@gmail.com</a></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <section id="contact">
+    <p class="section-label">Contact</p>
+    <h2>Let's talk.</h2>
+    <p class="contact-intro">Questions about an app, a collaboration idea, or anything else — send a message and I'll get back to you.</p>
+
+    <form id="contact-form" class="fade-in">
+      <div class="field-group">
+        <div>
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" placeholder="Your name" required />
+        </div>
+        <div>
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="your@email.com" required />
+        </div>
+      </div>
+      <div>
+        <label for="subject">Subject</label>
+        <input type="text" id="subject" name="subject" placeholder="What's this about?" />
+      </div>
+      <div>
+        <label for="message">Message</label>
+        <textarea id="message" name="message" placeholder="Your message…" required></textarea>
+      </div>
+      <button type="submit" class="btn-submit">Send message</button>
+      <p class="form-note">Or email directly: <a href="mailto:applendit@gmail.com" style="color:var(--muted);">applendit@gmail.com</a></p>
+    </form>
+  </section>
+
+  <footer>
+    <div class="footer-left">© 2025 Applendit · Habil Gür</div>
+    <div class="footer-right">
+      <a href="mailto:applendit@gmail.com">applendit@gmail.com</a>
+    </div>
+  </footer>
+
+  <div id="toast">Message sent — I'll be in touch!</div>
+
+  <script>
+    // Scroll fade-in
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // Form submit (static — opens mail client as fallback)
+    document.getElementById('contact-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const subject = document.getElementById('subject').value;
+      const message = document.getElementById('message').value;
+
+      const mailto = `mailto:applendit@gmail.com?subject=${encodeURIComponent(subject || 'Contact from website')}&body=${encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\n${message}`)}`;
+      window.location.href = mailto;
+
+      const toast = document.getElementById('toast');
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 3500);
+      this.reset();
+    });
+  </script>
+</body>
+</html>
