@@ -3,123 +3,322 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Privacy Policy — Salah Alarm</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=DM+Mono:wght@400&display=swap" rel="stylesheet" />
+  <title>Privacy Policy – Ezan Alarm (Salah Alarm)</title>
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --bg: #f9f8f6; --surface: #ffffff; --text: #1a1918;
-      --muted: #6b6862; --subtle: #b8b4ad; --border: #e4e0d8;
-      --font: 'DM Sans', sans-serif; --mono: 'DM Mono', monospace;
+      --bg: #0f0f1a;
+      --card: #1a1a2e;
+      --accent: #6c63ff;
+      --accent2: #a78bfa;
+      --text: #e2e8f0;
+      --muted: #94a3b8;
+      --border: rgba(108, 99, 255, 0.2);
     }
-    body { font-family: var(--font); background: var(--bg); color: var(--text); font-size: 16px; line-height: 1.7; -webkit-font-smoothing: antialiased; }
-
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 0 2rem; height: 56px;
-      background: rgba(249,248,246,0.88); backdrop-filter: blur(12px);
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      padding: 0;
+    }
+    header {
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+      padding: 60px 24px 40px;
+      text-align: center;
       border-bottom: 1px solid var(--border);
     }
-    .nav-logo { font-family: var(--mono); font-size: 13px; color: var(--text); text-decoration: none; }
-    .nav-back { font-size: 13px; color: var(--muted); text-decoration: none; transition: color 0.2s; }
-    .nav-back:hover { color: var(--text); }
-
-    main { max-width: 680px; margin: 0 auto; padding: 7rem 2rem 5rem; }
-
-    .doc-label { font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--subtle); margin-bottom: 1rem; }
-    h1 { font-size: 2rem; font-weight: 300; letter-spacing: -0.02em; margin-bottom: 0.5rem; }
-    .doc-meta { font-size: 13px; color: var(--muted); margin-bottom: 3rem; padding-bottom: 2rem; border-bottom: 1px solid var(--border); }
-
-    h2 { font-size: 1.1rem; font-weight: 500; margin: 2.5rem 0 0.75rem; }
-    p { color: var(--muted); font-weight: 300; margin-bottom: 1rem; font-size: 15px; }
-    ul { color: var(--muted); font-weight: 300; font-size: 15px; padding-left: 1.5rem; margin-bottom: 1rem; }
-    ul li { margin-bottom: 4px; }
-    a { color: var(--text); }
-
+    header .app-icon {
+      width: 80px;
+      height: 80px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      border-radius: 20px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 40px;
+      margin-bottom: 16px;
+      box-shadow: 0 8px 32px rgba(108, 99, 255, 0.4);
+    }
+    header h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      background: linear-gradient(90deg, #fff, var(--accent2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 8px;
+    }
+    header p {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+    .container {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 40px 24px 80px;
+    }
+    .section {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px 32px;
+      margin-bottom: 20px;
+    }
+    .section h2 {
+      color: var(--accent2);
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .section h2 .icon {
+      width: 32px;
+      height: 32px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      border-radius: 8px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      flex-shrink: 0;
+    }
+    .section p {
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin-bottom: 10px;
+    }
+    .section p:last-child { margin-bottom: 0; }
+    .section ul {
+      list-style: none;
+      padding: 0;
+    }
+    .section ul li {
+      color: var(--muted);
+      font-size: 0.95rem;
+      padding: 6px 0 6px 20px;
+      position: relative;
+    }
+    .section ul li::before {
+      content: '›';
+      position: absolute;
+      left: 0;
+      color: var(--accent2);
+      font-weight: bold;
+    }
+    .section ul li a {
+      color: var(--accent2);
+      text-decoration: none;
+    }
+    .section ul li a:hover { text-decoration: underline; }
+    .badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 12px;
+    }
+    .badge {
+      background: rgba(108, 99, 255, 0.15);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 6px 14px;
+      font-size: 0.85rem;
+      color: var(--accent2);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .updated {
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.85rem;
+      margin-bottom: 28px;
+    }
     .contact-box {
-      background: var(--surface); border: 1px solid var(--border);
-      border-radius: 12px; padding: 1.5rem; margin-top: 3rem;
+      background: linear-gradient(135deg, rgba(108,99,255,0.15), rgba(167,139,250,0.10));
+      border: 1px solid rgba(108,99,255,0.35);
+      border-radius: 16px;
+      padding: 28px 32px;
+      text-align: center;
     }
-    .contact-box p { margin: 0; font-size: 14px; }
-
-    footer {
-      border-top: 1px solid var(--border); padding: 1.5rem 2rem;
-      display: flex; justify-content: space-between; align-items: center;
-      max-width: 720px; margin: 0 auto; flex-wrap: wrap; gap: 1rem;
+    .contact-box h2 { color: white; justify-content: center; }
+    .contact-box a {
+      color: var(--accent2);
+      text-decoration: none;
+      font-weight: 500;
     }
-    .footer-left { font-family: var(--mono); font-size: 12px; color: var(--subtle); }
-    .footer-right { font-size: 12px; }
-    .footer-right a { color: var(--muted); text-decoration: none; }
-
-    @media (max-width: 600px) { main { padding: 6rem 1.25rem 4rem; } nav { padding: 0 1.25rem; } }
+    .contact-box a:hover { text-decoration: underline; }
+    @media (max-width: 600px) {
+      header { padding: 40px 16px 28px; }
+      header h1 { font-size: 1.5rem; }
+      .section { padding: 20px; }
+      .contact-box { padding: 20px; }
+    }
   </style>
 </head>
 <body>
 
-<nav>
-  <a href="/" class="nav-logo">applendit</a>
-  <a href="index.html" class="nav-back">← Salah Alarm</a>
-</nav>
+<header>
+  <div class="app-icon">🕌</div>
+  <h1>Ezan Alarm — Privacy Policy</h1>
+  <p>Applendit Apps · applendit@gmail.com</p>
+</header>
 
-<main>
-  <p class="doc-label">Legal</p>
-  <h1>Privacy Policy</h1>
-  <p class="doc-meta">Salah Alarm · Last updated: March 18, 2025 · Developer: Habil Gür / Applendit</p>
+<div class="container">
+  <p class="updated">Effective Date: March 18, 2026 &nbsp;·&nbsp; Last Updated: March 18, 2026</p>
 
-  <p>This Privacy Policy explains how Applendit ("we", "our", or "us") handles information in connection with the <strong>Salah Alarm: Prayer Times</strong> application ("the App"). We are committed to protecting your privacy.</p>
-
-  <h2>1. Information We Collect</h2>
-  <p>The App does not collect, store, or transmit any personally identifiable information. Specifically:</p>
-  <ul>
-    <li>We do not require account registration or login.</li>
-    <li>We do not collect your name, email address, or contact information.</li>
-    <li>We do not use analytics or tracking SDKs.</li>
-    <li>We do not share any data with third parties.</li>
-  </ul>
-
-  <h2>2. Location Data</h2>
-  <p>The App requests access to your device's location solely to calculate accurate prayer times and to display nearby mosques for your current location. Location data is:</p>
-  <ul>
-    <li>Processed locally on your device.</li>
-    <li>Never transmitted to our servers or any third party.</li>
-    <li>Used only while the App is active or when background location is enabled for prayer time updates.</li>
-  </ul>
-  <p>You may revoke location permission at any time through your device settings. The App will continue to function with manually set locations.</p>
-
-  <h2>3. Notifications</h2>
-  <p>The App uses local notifications to alert you of prayer times. These notifications are generated entirely on your device and do not involve any external servers or data transmission.</p>
-
-  <h2>4. Internet Access</h2>
-  <p>The App may use an internet connection to fetch updated prayer time data for new locations. No personal data is included in these requests. The App is fully functional offline using cached prayer time calculations.</p>
-
-  <h2>5. Data Safety (Google Play)</h2>
-  <p>As declared on Google Play:</p>
-  <ul>
-    <li>No data is shared with third parties.</li>
-    <li>No personal data is collected by the App.</li>
-  </ul>
-
-  <h2>6. Children's Privacy</h2>
-  <p>The App does not knowingly collect any information from children under the age of 13. Since no personal data is collected from any user, the App is safe for use by all ages.</p>
-
-  <h2>7. Changes to This Policy</h2>
-  <p>We may update this Privacy Policy from time to time. Any changes will be reflected on this page with an updated date. We encourage you to review this page periodically.</p>
-
-  <h2>8. Contact</h2>
-  <div class="contact-box">
-    <p>If you have any questions about this Privacy Policy, please contact us:</p>
-    <p style="margin-top: 0.75rem;"><strong>Applendit</strong> · Habil Gür<br />
-    <a href="mailto:applendit@gmail.com">applendit@gmail.com</a></p>
+  <!-- Introduction -->
+  <div class="section">
+    <h2><span class="icon">📄</span> Introduction</h2>
+    <p>
+      <strong>Ezan Alarm (Salah Alarm)</strong> is a free mobile application built by <strong>Applendit Apps</strong>.
+      This Privacy Policy explains how we handle information when you use our service.
+      By using Ezan Alarm, you agree to the practices described below.
+    </p>
+    <p>
+      We are committed to protecting your privacy. We do <strong>not sell</strong> your personal data to third parties.
+    </p>
   </div>
-</main>
 
-<footer>
-  <div class="footer-left">© 2025 Applendit · Habil Gür</div>
-  <div class="footer-right"><a href="/">← applendit.github.io</a></div>
-</footer>
+  <!-- Location -->
+  <div class="section">
+    <h2><span class="icon">📍</span> Location Data</h2>
+    <p>
+      Ezan Alarm requests access to your device's <strong>precise (GPS) and approximate location</strong>,
+      even when the app is in the background or closed.
+    </p>
+    <p>This data is used <strong>exclusively</strong> to:</p>
+    <ul>
+      <li>Determine your city and district for accurate, local prayer time calculations.</li>
+      <li>Detect if you have moved to a new location so that prayer times can be refreshed automatically.</li>
+    </ul>
+    <p>
+      Location data is <strong>processed on-device</strong> and used only to query the Diyanet / Emushaf prayer time API.
+      It is not stored on any server we control and is not shared with third parties beyond what is necessary (see Third-Party Services below).
+    </p>
+    <div class="badge-row">
+      <span class="badge">📍 ACCESS_FINE_LOCATION</span>
+      <span class="badge">🗺️ ACCESS_COARSE_LOCATION</span>
+      <span class="badge">🔄 Background Location</span>
+    </div>
+  </div>
+
+  <!-- Notifications & Alarms -->
+  <div class="section">
+    <h2><span class="icon">🔔</span> Notifications &amp; Alarms</h2>
+    <p>
+      The app schedules <strong>local notifications</strong> for each daily prayer time using your device's alarm and notification system.
+      These notifications are managed entirely on your device — no notification data is sent to external servers.
+    </p>
+    <div class="badge-row">
+      <span class="badge">🔔 POST_NOTIFICATIONS</span>
+      <span class="badge">⏰ SCHEDULE_EXACT_ALARM</span>
+      <span class="badge">🔁 RECEIVE_BOOT_COMPLETED</span>
+      <span class="badge">🔋 WAKE_LOCK</span>
+    </div>
+  </div>
+
+  <!-- Background Processing -->
+  <div class="section">
+    <h2><span class="icon">⚙️</span> Background Processing</h2>
+    <p>
+      Ezan Alarm uses a background task (WorkManager) that runs once daily — typically at 22:00 — to refresh
+      prayer time data for the next day. This ensures your alarms are always accurate without requiring you
+      to open the app.
+    </p>
+    <p>
+      The app also requests to be excluded from battery optimization (<strong>REQUEST_IGNORE_BATTERY_OPTIMIZATIONS</strong>)
+      so that alarms and background refresh tasks are not delayed or cancelled by the system.
+    </p>
+    <div class="badge-row">
+      <span class="badge">⚙️ FOREGROUND_SERVICE</span>
+      <span class="badge">🔋 REQUEST_IGNORE_BATTERY_OPTIMIZATIONS</span>
+    </div>
+  </div>
+
+  <!-- Advertising -->
+  <div class="section">
+    <h2><span class="icon">💡</span> Advertising (Google AdMob)</h2>
+    <p>
+      Ezan Alarm displays <strong>interstitial banner advertisements</strong> provided by <strong>Google AdMob</strong>
+      to support free access to the app. AdMob may collect your <strong>device advertising ID</strong> and other
+      device information to serve personalized ads.
+    </p>
+    <p>
+      You can opt out of personalized ads at any time through your device's ad settings
+      (<em>Settings → Google → Ads → Opt out of Ads Personalization</em>).
+    </p>
+    <p>AdMob ID: <code>ca-app-pub-4249544352278188~2185057246</code></p>
+    <ul>
+      <li><a href="https://support.google.com/admob/answer/6128543" target="_blank">Google AdMob Privacy Policy</a></li>
+      <li><a href="https://policies.google.com/privacy" target="_blank">Google Privacy Policy</a></li>
+    </ul>
+  </div>
+
+  <!-- Local Storage -->
+  <div class="section">
+    <h2><span class="icon">💾</span> Local Data Storage</h2>
+    <p>
+      All user preferences (alarm settings, selected sounds, language preference, last known location) are
+      stored <strong>only on your device</strong> using <em>SharedPreferences</em> / <em>Keychain</em>.
+      We do not operate a backend server that stores your personal data.
+    </p>
+  </div>
+
+  <!-- Third Party Services -->
+  <div class="section">
+    <h2><span class="icon">🔗</span> Third-Party Services</h2>
+    <p>The app communicates with the following external services to provide its core features:</p>
+    <ul>
+      <li><a href="https://ezanvakti.emushaf.net" target="_blank">Diyanet / Emushaf API</a> — Prayer time data source (Turkey &amp; International)</li>
+      <li><a href="https://aladhan.com/privacy-policy" target="_blank">AlAdhan API</a> — Fallback prayer time source for international locations</li>
+      <li><a href="https://support.google.com/admob/answer/6128543" target="_blank">Google AdMob</a> — In-app advertising</li>
+      <li><a href="https://policies.google.com/privacy" target="_blank">Google Play Services</a> — Location, notifications</li>
+    </ul>
+    <p>These services may collect data as described in their own privacy policies.</p>
+  </div>
+
+  <!-- Children -->
+  <div class="section">
+    <h2><span class="icon">👪</span> Children's Privacy</h2>
+    <p>
+      Ezan Alarm is not directed at children under the age of 13. We do not knowingly collect personal
+      information from children. If you believe your child has provided us with personal information,
+      please contact us and we will promptly delete it.
+    </p>
+  </div>
+
+  <!-- Security -->
+  <div class="section">
+    <h2><span class="icon">🔒</span> Security</h2>
+    <p>
+      We take reasonable precautions to protect your information. Since all data is processed on-device
+      and no personal data is stored on our servers, the risk surface is minimal. However, no method
+      of electronic storage is 100% secure.
+    </p>
+  </div>
+
+  <!-- Changes -->
+  <div class="section">
+    <h2><span class="icon">📋</span> Changes to This Policy</h2>
+    <p>
+      We may update this Privacy Policy from time to time. Any changes will be posted on this page
+      with a new effective date. Continued use of the app after changes constitutes acceptance of
+      the updated policy.
+    </p>
+  </div>
+
+  <!-- Contact -->
+  <div class="contact-box">
+    <h2><span class="icon">✉️</span> Contact Us</h2>
+    <p class="updated" style="margin:12px 0 0;">
+      Questions about this Privacy Policy? Reach us at<br />
+      <a href="mailto:applendit@gmail.com">applendit@gmail.com</a>
+    </p>
+  </div>
+</div>
 
 </body>
 </html>
