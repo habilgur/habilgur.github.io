@@ -1,1 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Salah Alarm — Prayer Times App</title>
+  <meta name="description" content="Salah Alarm reminds you of prayer times automatically, wherever you go. Qibla finder, nearby mosques, Ramadan schedule and more." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=DM+Mono:wght@400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #f9f8f6;
+      --surface: #ffffff;
+      --text: #1a1918;
+      --muted: #6b6862;
+      --subtle: #b8b4ad;
+      --border: #e4e0d8;
+      --accent: #1a6b4a;
+      --accent-bg: #edf7f2;
+      --font: 'DM Sans', sans-serif;
+      --mono: 'DM Mono', monospace;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font); background: var(--bg); color: var(--text); font-size: 16px; line-height: 1.7; -webkit-font-smoothing: antialiased; }
 
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 2rem; height: 56px;
+      background: rgba(249,248,246,0.88); backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo { font-family: var(--mono); font-size: 13px; color: var(--text); text-decoration: none; }
+    .nav-links { display: flex; gap: 1.5rem; list-style: none; }
+    .nav-links a { font-size: 13px; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--text); }
+
+    /* HERO */
+    .hero {
+      padding: 9rem 2rem 5rem;
+      max-width: 760px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr auto; gap: 3rem; align-items: center;
+    }
+    .hero-tag {
+      display: inline-block; font-family: var(--mono); font-size: 11px;
+      letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent);
+      background: var(--accent-bg); border-radius: 100px; padding: 4px 12px; margin-bottom: 1.5rem;
+    }
+    h1 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 300; letter-spacing: -0.03em; line-height: 1.15; margin-bottom: 1rem; }
+    h1 em { font-style: italic; }
+    .hero-sub { font-size: 1rem; color: var(--muted); font-weight: 300; margin-bottom: 2rem; max-width: 420px; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 11px 24px; border-radius: 100px; font-size: 14px;
+      font-family: var(--font); text-decoration: none; transition: all 0.2s; cursor: pointer; border: none;
+    }
+    .btn-primary { background: var(--text); color: var(--bg); }
+    .btn-primary:hover { opacity: 0.82; }
+    .btn-outline { background: transparent; color: var(--text); border: 1px solid var(--border); }
+    .btn-outline:hover { background: var(--accent-bg); border-color: var(--accent); color: var(--accent); }
+    .btn-group { display: flex; gap: 10px; flex-wrap: wrap; }
+
+    .app-icon {
+      width: 120px; height: 120px; border-radius: 24px;
+      overflow: hidden; flex-shrink: 0;
+      border: 1px solid var(--border);
+    }
+    .app-icon img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+    /* DIVIDER */
+    .divider { width: 100%; max-width: 760px; margin: 0 auto; height: 1px; background: var(--border); }
+
+    /* FEATURES */
+    section { padding: 5rem 2rem; max-width: 760px; margin: 0 auto; }
+    .section-label { font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--subtle); margin-bottom: 1.5rem; }
+    h2 { font-size: 1.7rem; font-weight: 300; letter-spacing: -0.02em; margin-bottom: 2rem; }
+
+    .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; }
+    .feature-cell { background: var(--surface); padding: 1.5rem; }
+    .feature-icon { font-size: 22px; margin-bottom: 10px; }
+    .feature-title { font-size: 14px; font-weight: 500; margin-bottom: 4px; }
+    .feature-desc { font-size: 13px; color: var(--muted); font-weight: 300; line-height: 1.5; }
+
+    /* RATINGS */
+    .rating-row { display: flex; align-items: center; gap: 16px; margin-bottom: 2rem; }
+    .rating-big { font-size: 3rem; font-weight: 300; letter-spacing: -0.04em; }
+    .rating-stars { color: var(--accent); font-size: 18px; }
+    .rating-sub { font-size: 13px; color: var(--muted); margin-top: 2px; }
+
+    /* PRIVACY LINK */
+    .links-row { display: flex; gap: 1.5rem; flex-wrap: wrap; margin-top: 2rem; }
+    .links-row a { font-size: 14px; color: var(--muted); text-decoration: none; border-bottom: 1px solid var(--border); padding-bottom: 1px; transition: color 0.2s, border-color 0.2s; }
+    .links-row a:hover { color: var(--text); border-color: var(--text); }
+
+    footer {
+      border-top: 1px solid var(--border); padding: 1.5rem 2rem;
+      display: flex; justify-content: space-between; align-items: center;
+      max-width: 800px; margin: 0 auto; flex-wrap: wrap; gap: 1rem;
+    }
+    .footer-left { font-family: var(--mono); font-size: 12px; color: var(--subtle); }
+    .footer-right { font-size: 12px; }
+    .footer-right a { color: var(--muted); text-decoration: none; }
+    .footer-right a:hover { color: var(--text); }
+
+    @media (max-width: 600px) {
+      .hero { grid-template-columns: 1fr; }
+      .app-icon { display: none; }
+      nav { padding: 0 1.25rem; }
+      section { padding: 4rem 1.25rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">applendit</a>
+  <ul class="nav-links">
+    <li><a href="#features">Features</a></li>
+    <li><a href="#download">Download</a></li>
+    <li><a href="privacy-policy.html">Privacy</a></li>
+  </ul>
+</nav>
+
+<div class="hero">
+  <div>
+    <div class="hero-tag">Prayer Times App</div>
+    <h1>Salah Alarm<br /><em>Prayer Times</em></h1>
+    <p class="hero-sub">Never miss a prayer. Salah Alarm reminds you of prayer times automatically, wherever you go — 7 days, 24 hours.</p>
+    <div class="btn-group" id="download">
+      <a href="https://play.google.com/store/apps/details?id=com.applendit.athan7_5" class="btn btn-primary" target="_blank">
+        ↓ Google Play
+      </a>
+      <a href="#features" class="btn btn-outline">See features</a>
+    </div>
+  </div>
+  <div class="app-icon"><img src="icon.png" alt="Salah Alarm icon" /></div>
+</div>
+
+<div class="divider"></div>
+
+<section id="features">
+  <p class="section-label">Features</p>
+  <h2>Everything you need.</h2>
+  <div class="features-grid">
+    <div class="feature-cell">
+      <div class="feature-icon">🧭</div>
+      <div class="feature-title">Adaptable Travel Mode</div>
+      <div class="feature-desc">Prayer times update automatically based on your current location.</div>
+    </div>
+    <div class="feature-cell">
+      <div class="feature-icon">🔔</div>
+      <div class="feature-title">Athan Alerts</div>
+      <div class="feature-desc">Notifications for Fajr, Sunrise, Dhuhr, Asr, Maghrib and Isha.</div>
+    </div>
+    <div class="feature-cell">
+      <div class="feature-icon">🕋</div>
+      <div class="feature-title">Qibla Finder</div>
+      <div class="feature-desc">Find the direction of Qibla with the built-in compass.</div>
+    </div>
+    <div class="feature-cell">
+      <div class="feature-icon">🕌</div>
+      <div class="feature-title">Nearby Mosques</div>
+      <div class="feature-desc">Discover mosques near you wherever you are.</div>
+    </div>
+    <div class="feature-cell">
+      <div class="feature-icon">🌙</div>
+      <div class="feature-title">Ramadan Schedule</div>
+      <div class="feature-desc">Easily track Iftar and Sahoor times during Ramadan.</div>
+    </div>
+    <div class="feature-cell">
+      <div class="feature-icon">📖</div>
+      <div class="feature-title">Holy Quran</div>
+      <div class="feature-desc">Read in original edition or translation. Also includes 99 Names of Allah.</div>
+    </div>
+    <div class="feature-cell">
+      <div class="feature-icon">📶</div>
+      <div class="feature-title">Works Offline</div>
+      <div class="feature-desc">View prayer times even without an internet connection.</div>
+    </div>
+    <div class="feature-cell">
+      <div class="feature-icon">🔋</div>
+      <div class="feature-title">Battery Friendly</div>
+      <div class="feature-desc">Minimal battery and data usage. Lightweight app size.</div>
+    </div>
+  </div>
+
+  <div class="rating-row" style="margin-top: 3rem;">
+    <div class="rating-big">4.2</div>
+    <div>
+      <div class="rating-stars">★★★★☆</div>
+      <div class="rating-sub">1,540+ reviews on Google Play</div>
+    </div>
+  </div>
+
+  <div class="links-row">
+    <a href="https://play.google.com/store/apps/details?id=com.applendit.athan7_5" target="_blank">View on Google Play →</a>
+    <a href="privacy-policy.html">Privacy Policy</a>
+    <a href="mailto:applendit@gmail.com">Support</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-left">© 2025 Applendit · Habil Gür</div>
+  <div class="footer-right"><a href="/">← Back to Applendit</a></div>
+</footer>
+
+</body>
+</html>
