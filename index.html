@@ -61,6 +61,7 @@
 
     .nav-links {
       display: flex;
+      align-items: center;
       gap: 2rem;
       list-style: none;
     }
@@ -72,6 +73,109 @@
       transition: color 0.2s;
     }
     .nav-links a:hover { color: var(--text); }
+
+    /* APPS DROPDOWN */
+    .nav-dropdown {
+      position: relative;
+    }
+
+    .nav-dropdown-toggle {
+      font-size: 14px;
+      color: var(--muted);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      transition: color 0.2s;
+      user-select: none;
+    }
+
+    .nav-dropdown-toggle:hover,
+    .nav-dropdown.open .nav-dropdown-toggle {
+      color: var(--text);
+    }
+
+    .nav-dropdown-toggle svg {
+      width: 12px;
+      height: 12px;
+      transition: transform 0.2s ease;
+      stroke: currentColor;
+    }
+
+    .nav-dropdown.open .nav-dropdown-toggle svg {
+      transform: rotate(180deg);
+    }
+
+    .nav-dropdown-menu {
+      position: absolute;
+      top: calc(100% + 12px);
+      right: 0;
+      min-width: 200px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 6px;
+      box-shadow: 0 8px 32px rgba(26,25,24,0.10), 0 2px 8px rgba(26,25,24,0.06);
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(-6px);
+      transition: opacity 0.18s ease, transform 0.18s ease;
+    }
+
+    .nav-dropdown.open .nav-dropdown-menu {
+      opacity: 1;
+      pointer-events: all;
+      transform: translateY(0);
+    }
+
+    .nav-dropdown-menu a {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 9px 12px;
+      border-radius: 8px;
+      font-size: 13.5px;
+      color: var(--muted);
+      text-decoration: none;
+      transition: background 0.15s, color 0.15s;
+    }
+
+    .nav-dropdown-menu a:hover {
+      background: var(--accent-soft);
+      color: var(--text);
+    }
+
+    .app-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 7px;
+      background: var(--accent-soft);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 14px;
+    }
+
+    .app-info {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+    }
+
+    .app-name {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text);
+      line-height: 1.2;
+    }
+
+    .app-desc {
+      font-size: 11px;
+      color: var(--subtle);
+      line-height: 1.2;
+    }
 
     /* SECTIONS */
     section { padding: 7rem 2rem; max-width: 720px; margin: 0 auto; }
@@ -331,6 +435,7 @@
       .field-group { grid-template-columns: 1fr; }
       .info-grid { grid-template-columns: 1fr; }
       h1 { font-size: 2.2rem; }
+      .nav-links { gap: 1.25rem; }
     }
   </style>
 </head>
@@ -340,6 +445,34 @@
     <a href="#hero" class="nav-logo">applendit</a>
     <ul class="nav-links">
       <li><a href="#about">About</a></li>
+
+      <!-- APPS DROPDOWN -->
+      <li class="nav-dropdown" id="appsDropdown">
+        <div class="nav-dropdown-toggle" id="appsToggle">
+          Apps
+          <svg viewBox="0 0 12 12" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="2,4 6,8 10,4"/>
+          </svg>
+        </div>
+        <div class="nav-dropdown-menu">
+          <a href="https://habilgur.github.io/ezan_alarm/" target="_blank" rel="noopener">
+            <div class="app-icon">🕌</div>
+            <div class="app-info">
+              <span class="app-name">Ezan Alarm</span>
+              <span class="app-desc">Prayer time alerts</span>
+            </div>
+          </a>
+          <a href="https://habilgur.github.io/salah_pray" target="_blank" rel="noopener">
+            <div class="app-icon">🤲</div>
+            <div class="app-info">
+              <span class="app-name">Salah Pray</span>
+              <span class="app-desc">Daily prayer guide</span>
+            </div>
+          </a>
+        </div>
+      </li>
+      <!-- END APPS DROPDOWN -->
+
       <li><a href="#contact">Contact</a></li>
     </ul>
   </nav>
@@ -447,6 +580,25 @@
       toast.classList.add('show');
       setTimeout(() => toast.classList.remove('show'), 3500);
       this.reset();
+    });
+
+    // Apps dropdown toggle
+    const appsDropdown = document.getElementById('appsDropdown');
+    const appsToggle = document.getElementById('appsToggle');
+
+    appsToggle.addEventListener('click', function(e) {
+      e.stopPropagation();
+      appsDropdown.classList.toggle('open');
+    });
+
+    // Close dropdown when clicking outside
+    document.addEventListener('click', function() {
+      appsDropdown.classList.remove('open');
+    });
+
+    // Prevent dropdown menu clicks from closing it
+    appsDropdown.querySelector('.nav-dropdown-menu').addEventListener('click', function(e) {
+      e.stopPropagation();
     });
   </script>
 </body>
