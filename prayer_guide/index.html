@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Prayer Guide — Salah Step by Step</title>
+  <meta name="description" content="Prayer Guide is a complete Islamic prayer companion. Learn how to perform Salah, Wudu, Duas, Surahs and more." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=DM+Mono:wght@400;500&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #f9f8f6;
+      --surface: #ffffff;
+      --text: #1a1918;
+      --muted: #6b6862;
+      --subtle: #b8b4ad;
+      --border: #e4e0d8;
+      --accent-soft: #f0ede8;
+      --teal: #1d6e7a;
+      --teal-light: #2a8fa0;
+      --mauve: #8a6e7a;
+      --font: 'DM Sans', sans-serif;
+      --serif: 'Playfair Display', serif;
+      --mono: 'DM Mono', monospace;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--text);
+      font-size: 16px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 2rem;
+      height: 60px;
+      background: rgba(249,248,246,0.88);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo {
+      font-family: var(--mono);
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      color: var(--text);
+      text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 1.75rem; list-style: none; align-items: center; }
+    .nav-links a {
+      font-size: 13.5px;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--text); }
+    .nav-cta {
+      background: var(--teal) !important;
+      color: #fff !important;
+      padding: 7px 16px;
+      border-radius: 100px;
+      font-size: 13px !important;
+      transition: opacity 0.2s !important;
+    }
+    .nav-cta:hover { opacity: 0.85; }
+
+    /* HERO */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      padding: 7rem 2rem 5rem;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 55% at 80% 20%, rgba(29,110,122,0.13) 0%, transparent 70%),
+        radial-gradient(ellipse 50% 60% at 20% 80%, rgba(138,110,122,0.10) 0%, transparent 65%),
+        var(--bg);
+      z-index: 0;
+    }
+
+    /* Geometric decoration */
+    .hero-geo {
+      position: absolute;
+      top: 80px; right: -40px;
+      width: 520px; height: 520px;
+      opacity: 0.06;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 1100px;
+      margin: 0 auto;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--teal);
+      border: 1px solid rgba(29,110,122,0.25);
+      border-radius: 100px;
+      padding: 5px 14px;
+      margin-bottom: 1.75rem;
+      background: rgba(29,110,122,0.05);
+      animation: fadeUp 0.7s ease both;
+    }
+    .hero-tag::before { content: "🕌"; font-size: 12px; }
+
+    h1 {
+      font-family: var(--serif);
+      font-size: clamp(2.6rem, 4.5vw, 3.8rem);
+      font-weight: 400;
+      line-height: 1.12;
+      letter-spacing: -0.01em;
+      margin-bottom: 1.4rem;
+      color: var(--text);
+      animation: fadeUp 0.7s 0.1s ease both;
+    }
+    h1 em {
+      font-style: italic;
+      color: var(--teal);
+    }
+
+    .hero-sub {
+      font-size: 1.05rem;
+      color: var(--muted);
+      max-width: 440px;
+      margin-bottom: 2.5rem;
+      font-weight: 300;
+      line-height: 1.75;
+      animation: fadeUp 0.7s 0.2s ease both;
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      animation: fadeUp 0.7s 0.3s ease both;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 11px 26px;
+      border-radius: 100px;
+      font-size: 14px;
+      font-weight: 400;
+      text-decoration: none;
+      transition: all 0.2s;
+      cursor: pointer;
+      border: none;
+      font-family: var(--font);
+    }
+    .btn-primary {
+      background: var(--teal);
+      color: #fff;
+      box-shadow: 0 4px 20px rgba(29,110,122,0.25);
+    }
+    .btn-primary:hover { opacity: 0.87; transform: translateY(-1px); }
+    .btn-outline {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+    .btn-outline:hover { background: var(--accent-soft); }
+
+    /* App icon / visual side */
+    .hero-visual {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      animation: fadeUp 0.8s 0.15s ease both;
+    }
+
+    .icon-wrapper {
+      position: relative;
+      width: 180px;
+      height: 180px;
+    }
+
+    .icon-glow {
+      position: absolute;
+      inset: -30px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(29,110,122,0.18) 0%, transparent 70%);
+      animation: pulse 3s ease-in-out infinite;
+    }
+
+    .app-icon-img {
+      width: 180px;
+      height: 180px;
+      border-radius: 40px;
+      box-shadow: 0 24px 64px rgba(29,110,122,0.22), 0 8px 24px rgba(0,0,0,0.10);
+      position: relative;
+      z-index: 1;
+      display: block;
+    }
+
+    /* Floating feature chips */
+    .chip {
+      position: absolute;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      padding: 7px 14px;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--text);
+      white-space: nowrap;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.07);
+      animation: float 4s ease-in-out infinite;
+    }
+    .chip-1 { top: -20px; right: -30px; animation-delay: 0s; }
+    .chip-2 { bottom: 10px; right: -50px; animation-delay: 1.3s; }
+    .chip-3 { top: 40%; left: -60px; animation-delay: 0.7s; }
+
+    /* DIVIDER */
+    .divider {
+      width: 100%;
+      height: 1px;
+      background: var(--border);
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    /* FEATURES */
+    #features {
+      padding: 6rem 2rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--subtle);
+      margin-bottom: 1.25rem;
+    }
+
+    h2 {
+      font-family: var(--serif);
+      font-size: clamp(1.8rem, 3vw, 2.5rem);
+      font-weight: 400;
+      letter-spacing: -0.01em;
+      margin-bottom: 3rem;
+      line-height: 1.25;
+      color: var(--text);
+    }
+    h2 em { font-style: italic; color: var(--teal); }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+    }
+
+    .feature-card {
+      background: var(--surface);
+      padding: 2rem 1.75rem;
+      transition: background 0.2s;
+    }
+    .feature-card:hover { background: #fafaf8; }
+
+    .feature-icon {
+      font-size: 1.7rem;
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    .feature-title {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+
+    .feature-desc {
+      font-size: 13.5px;
+      color: var(--muted);
+      font-weight: 300;
+      line-height: 1.65;
+    }
+
+    /* SCREENSHOTS / PREVIEW SECTION */
+    #preview {
+      padding: 5rem 2rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .preview-card {
+      background: linear-gradient(135deg, rgba(29,110,122,0.08) 0%, rgba(138,110,122,0.06) 100%);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 3.5rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .preview-text h3 {
+      font-family: var(--serif);
+      font-size: 1.9rem;
+      font-weight: 400;
+      margin-bottom: 1rem;
+      line-height: 1.25;
+    }
+    .preview-text h3 em { font-style: italic; color: var(--teal); }
+    .preview-text p {
+      color: var(--muted);
+      font-weight: 300;
+      font-size: 1rem;
+      line-height: 1.75;
+      margin-bottom: 1.75rem;
+    }
+
+    .language-badges {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .lang-badge {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 6px 14px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .preview-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .stat-cell {
+      background: var(--surface);
+      padding: 1.5rem;
+      text-align: center;
+    }
+    .stat-number {
+      font-family: var(--serif);
+      font-size: 2.2rem;
+      font-weight: 400;
+      color: var(--teal);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .stat-label {
+      font-size: 12px;
+      color: var(--muted);
+      font-family: var(--mono);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    /* DOWNLOAD */
+    #download {
+      padding: 5rem 2rem 6rem;
+      max-width: 1100px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .download-box {
+      background: var(--text);
+      border-radius: 20px;
+      padding: 4rem 3rem;
+      color: #fff;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .download-box::before {
+      content: "";
+      position: absolute;
+      top: -60px; right: -60px;
+      width: 300px; height: 300px;
+      border-radius: 50%;
+      background: rgba(29,110,122,0.3);
+      filter: blur(60px);
+    }
+    .download-box::after {
+      content: "";
+      position: absolute;
+      bottom: -40px; left: -40px;
+      width: 200px; height: 200px;
+      border-radius: 50%;
+      background: rgba(138,110,122,0.25);
+      filter: blur(50px);
+    }
+
+    .download-box h2 {
+      color: #fff;
+      font-family: var(--serif);
+      font-size: 2.2rem;
+      margin-bottom: 0.75rem;
+      position: relative; z-index: 1;
+    }
+    .download-box p {
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 2.5rem;
+      font-weight: 300;
+      position: relative; z-index: 1;
+    }
+    .download-btns {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+      position: relative; z-index: 1;
+    }
+
+    .btn-white {
+      background: #fff;
+      color: var(--text);
+      padding: 11px 26px;
+      border-radius: 100px;
+      font-size: 14px;
+      font-weight: 500;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: opacity 0.2s, transform 0.2s;
+    }
+    .btn-white:hover { opacity: 0.9; transform: translateY(-1px); }
+
+    .btn-ghost {
+      background: rgba(255,255,255,0.1);
+      color: rgba(255,255,255,0.8);
+      padding: 11px 26px;
+      border-radius: 100px;
+      font-size: 14px;
+      font-weight: 400;
+      text-decoration: none;
+      border: 1px solid rgba(255,255,255,0.2);
+      transition: background 0.2s;
+    }
+    .btn-ghost:hover { background: rgba(255,255,255,0.15); }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 1100px;
+      margin: 0 auto;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .footer-left {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--subtle);
+    }
+    .footer-right {
+      display: flex;
+      gap: 1.5rem;
+      font-size: 12px;
+    }
+    .footer-right a {
+      color: var(--muted);
+      text-decoration: none;
+    }
+    .footer-right a:hover { color: var(--text); }
+
+    /* KEYFRAMES */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50%       { transform: translateY(-8px); }
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 0.6; transform: scale(1); }
+      50%       { opacity: 1; transform: scale(1.08); }
+    }
+
+    /* Scroll fade-in */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    /* RESPONSIVE */
+    @media (max-width: 860px) {
+      .hero-inner { grid-template-columns: 1fr; text-align: center; }
+      .hero-visual { order: -1; }
+      .hero-sub { margin: 0 auto 2.5rem; }
+      .btn-group { justify-content: center; }
+      .chip { display: none; }
+      .features-grid { grid-template-columns: 1fr 1fr; }
+      .preview-card { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 600px) {
+      nav { padding: 0 1.25rem; }
+      #features, #preview, #download { padding-left: 1.25rem; padding-right: 1.25rem; }
+      #hero { padding-left: 1.25rem; padding-right: 1.25rem; }
+      .features-grid { grid-template-columns: 1fr; }
+      .download-box { padding: 2.5rem 1.75rem; }
+      .nav-links { gap: 1rem; }
+      h1 { font-size: 2.3rem; }
+      .preview-stats { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="https://habilgur.github.io/" class="nav-logo">applendit</a>
+    <ul class="nav-links">
+      <li><a href="#features">Features</a></li>
+      <li><a href="#download">Download</a></li>
+      <li><a href="privacy-policy.html">Privacy</a></li>
+      <li><a href="https://play.google.com/store/apps/details?id=com.applendit.namaz_dua_sure" class="nav-cta" target="_blank" rel="noopener">↓ Google Play</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-bg"></div>
+
+    <!-- Geometric background -->
+    <svg class="hero-geo" viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="250,10 490,380 10,380" stroke="#1d6e7a" stroke-width="1.5" fill="none"/>
+      <polygon points="250,60 450,370 50,370" stroke="#1d6e7a" stroke-width="1" fill="none"/>
+      <circle cx="250" cy="250" r="180" stroke="#1d6e7a" stroke-width="1"/>
+      <circle cx="250" cy="250" r="120" stroke="#8a6e7a" stroke-width="0.75"/>
+      <line x1="250" y1="10" x2="250" y2="490" stroke="#1d6e7a" stroke-width="0.5"/>
+      <line x1="10" y1="250" x2="490" y2="250" stroke="#1d6e7a" stroke-width="0.5"/>
+    </svg>
+
+    <div class="hero-inner">
+      <div class="hero-content">
+        <div class="hero-tag">Complete Prayer Guide</div>
+        <h1>Learn to pray<br/><em>step by step.</em></h1>
+        <p class="hero-sub">Prayer Guide is your complete Islamic prayer companion — from Wudu to Salah, Duas to Surahs. Clean, simple, offline. No account needed.</p>
+        <div class="btn-group">
+          <a href="https://play.google.com/store/apps/details?id=com.applendit.namaz_dua_sure" class="btn btn-primary" target="_blank" rel="noopener">
+            ↓ &nbsp;Google Play
+          </a>
+          <a href="#features" class="btn btn-outline">See features</a>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="icon-wrapper">
+          <div class="icon-glow"></div>
+          <img src="icon.png" alt="Prayer Guide icon" class="app-icon-img" />
+          <div class="chip chip-1">🕌 5 Daily Prayers</div>
+          <div class="chip chip-2">📖 Quran Surahs</div>
+          <div class="chip chip-3">🤲 Duas</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- FEATURES -->
+  <section id="features">
+    <p class="section-label fade-in">Features</p>
+    <h2 class="fade-in">Everything you <em>need.</em></h2>
+
+    <div class="features-grid fade-in">
+      <div class="feature-card">
+        <span class="feature-icon">🕌</span>
+        <div class="feature-title">Daily Salah Guide</div>
+        <div class="feature-desc">Step-by-step instructions for all 5 daily prayers — Fajr, Dhuhr, Asr, Maghrib and Isha — with Fard and Sunnah sections.</div>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">💧</span>
+        <div class="feature-title">Wudu Instructions</div>
+        <div class="feature-desc">Illustrated guide to performing ablution correctly before prayer, with detailed descriptions for each step.</div>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">🤲</span>
+        <div class="feature-title">Duas &amp; Supplications</div>
+        <div class="feature-desc">All essential duas used in prayer — Subhanaka, At-Tahiyyat, Allahümme Salli, Allahümme Barik and more — in Arabic and Latin.</div>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">📖</span>
+        <div class="feature-title">Quranic Surahs</div>
+        <div class="feature-desc">Commonly recited Surahs including Al-Fatiha, Yasin and others — with Arabic text and transliteration.</div>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">🖼️</span>
+        <div class="feature-title">Illustrated Postures</div>
+        <div class="feature-desc">Visual guide to every prayer posture — Qiyaam, Ruku, Sujud, Tashahhud — with illustrated references and definitions.</div>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">📚</span>
+        <div class="feature-title">Must-Know Knowledge</div>
+        <div class="feature-desc">Essential Islamic Q&amp;A — the five pillars, fard, wajib, sunnah, conditions of prayer, 99 Names of Allah and more.</div>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">🌍</span>
+        <div class="feature-title">Bilingual — EN &amp; TR</div>
+        <div class="feature-desc">Full support for both English and Turkish. Switch instantly between languages throughout the entire app.</div>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">📶</span>
+        <div class="feature-title">Works Offline</div>
+        <div class="feature-desc">All content is available offline. No internet connection required to learn how to pray.</div>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">🔒</span>
+        <div class="feature-title">No Account Needed</div>
+        <div class="feature-desc">Open and use — no sign-up, no login, no personal data collected. Just the content you need.</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- PREVIEW -->
+  <section id="preview">
+    <div class="preview-card fade-in">
+      <div class="preview-text">
+        <h3>Available in<br/><em>two languages.</em></h3>
+        <p>Prayer Guide supports both English and Turkish from the ground up. Every prayer step, dua, surah, posture definition and piece of knowledge is fully translated — so you can learn in your native language.</p>
+        <div class="language-badges">
+          <div class="lang-badge">🇬🇧 English</div>
+          <div class="lang-badge">🇹🇷 Türkçe</div>
+        </div>
+      </div>
+      <div class="preview-stats">
+        <div class="stat-cell">
+          <div class="stat-number">5</div>
+          <div class="stat-label">Daily Prayers</div>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-number">20+</div>
+          <div class="stat-label">Duas</div>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-number">10+</div>
+          <div class="stat-label">Surahs</div>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-number">99</div>
+          <div class="stat-label">Names of Allah</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DOWNLOAD -->
+  <section id="download">
+    <div class="download-box fade-in">
+      <h2>Free to download.</h2>
+      <p>Available on Google Play. No subscription, no login required.</p>
+      <div class="download-btns">
+        <a href="https://play.google.com/store/apps/details?id=com.applendit.namaz_dua_sure" class="btn-white" target="_blank" rel="noopener">
+          ↓ &nbsp;Google Play
+        </a>
+        <a href="privacy-policy.html" class="btn-ghost">Privacy Policy</a>
+        <a href="mailto:applendit@gmail.com" class="btn-ghost">Support</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-left">© 2025 Applendit · Habil Gür</div>
+    <div class="footer-right">
+      <a href="mailto:applendit@gmail.com">applendit@gmail.com</a>
+      <a href="privacy-policy.html">Privacy Policy</a>
+      <a href="https://habilgur.github.io/">← Back to Applendit</a>
+    </div>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
