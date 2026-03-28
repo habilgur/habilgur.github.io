@@ -4,428 +4,462 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Privacy Policy — Prayer Guide</title>
-  <meta name="description" content="Privacy Policy for Prayer Guide app by Applendit." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg: #f9f8f6;
+      --bg: #faf9f7;
       --surface: #ffffff;
-      --text: #1a1918;
-      --muted: #6b6862;
-      --subtle: #b8b4ad;
-      --border: #e4e0d8;
-      --accent-soft: #f0ede8;
-      --teal: #1d6e7a;
-      --font: 'DM Sans', sans-serif;
-      --mono: 'DM Mono', monospace;
+      --border: #e8e4df;
+      --text: #2c2825;
+      --muted: #7a7370;
+      --accent: #6b8f6e;
+      --accent-light: #eef3ee;
+      --warn: #c47c3a;
+      --warn-light: #fdf3e8;
+      --radius: 12px;
     }
 
-    html { scroll-behavior: smooth; }
-
     body {
-      font-family: var(--font);
+      font-family: 'DM Sans', sans-serif;
       background: var(--bg);
       color: var(--text);
-      font-size: 16px;
-      line-height: 1.75;
-      -webkit-font-smoothing: antialiased;
+      line-height: 1.7;
+      font-size: 15px;
     }
 
     /* NAV */
     nav {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 16px 24px;
+      border-bottom: 1px solid var(--border);
+      background: var(--surface);
       position: sticky;
       top: 0;
-      z-index: 100;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 2rem;
-      height: 58px;
-      background: rgba(249,248,246,0.9);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
+      z-index: 10;
     }
-    .nav-logo {
-      font-family: var(--mono);
-      font-size: 13px;
-      font-weight: 500;
-      letter-spacing: 0.05em;
-      color: var(--text);
+    nav a {
+      color: var(--accent);
       text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
     }
-    .nav-back {
-      font-size: 13px;
-      color: var(--muted);
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      transition: color 0.2s;
-    }
-    .nav-back:hover { color: var(--text); }
+    nav a:hover { text-decoration: underline; }
+    nav .sep { color: var(--border); font-size: 18px; }
 
-    /* MAIN LAYOUT */
-    .page-wrap {
-      max-width: 760px;
-      margin: 0 auto;
-      padding: 4rem 2rem 6rem;
-    }
-
-    /* HEADER */
-    .doc-header {
-      margin-bottom: 3rem;
-      padding-bottom: 2rem;
+    /* HERO */
+    .hero {
+      text-align: center;
+      padding: 56px 24px 40px;
       border-bottom: 1px solid var(--border);
-    }
-
-    .doc-icon {
-      font-size: 2.2rem;
-      margin-bottom: 1.25rem;
-      display: block;
-    }
-
-    .doc-title {
-      font-size: 2rem;
-      font-weight: 400;
-      letter-spacing: -0.02em;
-      line-height: 1.2;
-      margin-bottom: 0.4rem;
-      color: var(--text);
-    }
-
-    .doc-app {
-      font-size: 1.1rem;
-      font-weight: 500;
-      color: var(--teal);
-      margin-bottom: 1rem;
-    }
-
-    .doc-meta {
-      display: flex;
-      gap: 1.5rem;
-      flex-wrap: wrap;
-    }
-
-    .doc-meta span {
-      font-family: var(--mono);
-      font-size: 11px;
-      letter-spacing: 0.08em;
-      color: var(--subtle);
-      text-transform: uppercase;
-    }
-
-    /* SECTIONS */
-    .policy-section {
-      margin-bottom: 2.5rem;
-    }
-
-    .section-heading {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 1.05rem;
-      font-weight: 500;
-      color: var(--text);
-      margin-bottom: 0.9rem;
-      padding-bottom: 0.6rem;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .section-heading .emoji {
-      font-size: 1.1rem;
-    }
-
-    p {
-      font-size: 15px;
-      color: var(--muted);
-      font-weight: 300;
-      margin-bottom: 0.9rem;
-      line-height: 1.8;
-    }
-
-    p strong {
-      color: var(--text);
-      font-weight: 500;
-    }
-
-    ul {
-      list-style: none;
-      margin: 0.5rem 0 1rem 0;
-      padding: 0;
-    }
-
-    ul li {
-      font-size: 15px;
-      color: var(--muted);
-      font-weight: 300;
-      padding: 5px 0 5px 1.4rem;
-      position: relative;
-      line-height: 1.7;
-    }
-
-    ul li::before {
-      content: "·";
-      position: absolute;
-      left: 0;
-      color: var(--teal);
-      font-weight: bold;
-      font-size: 1.1rem;
-      top: 4px;
-    }
-
-    a {
-      color: var(--teal);
-      text-decoration: none;
-    }
-    a:hover { text-decoration: underline; }
-
-    /* PERMISSION TAGS */
-    .perm-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin: 0.75rem 0 1rem;
-    }
-
-    .perm-tag {
       background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 5px 12px;
-      font-family: var(--mono);
-      font-size: 11.5px;
-      color: var(--text);
-      display: flex;
-      align-items: center;
-      gap: 6px;
     }
-
-    /* ADMOB BOX */
-    .admob-box {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 1.5rem;
-      margin: 1rem 0;
-    }
-
-    .admob-box .admob-id {
-      font-family: var(--mono);
+    .hero .icon { font-size: 40px; margin-bottom: 16px; }
+    .hero h1 { font-size: 28px; font-weight: 600; margin-bottom: 6px; }
+    .hero .app-name { font-size: 17px; color: var(--accent); font-weight: 500; margin-bottom: 12px; }
+    .hero .meta {
+      font-family: 'DM Mono', monospace;
       font-size: 12px;
       color: var(--muted);
-      background: var(--accent-soft);
-      border-radius: 6px;
-      padding: 6px 12px;
-      display: inline-block;
-      margin-top: 8px;
-    }
-
-    .admob-links {
-      margin-top: 12px;
       display: flex;
-      flex-direction: column;
-      gap: 6px;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
     }
 
-    .admob-links a {
-      font-size: 13.5px;
+    /* UPDATED BADGE */
+    .updated-badge {
+      display: inline-block;
+      background: var(--accent-light);
+      color: var(--accent);
+      border: 1px solid var(--accent);
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 3px 12px;
+      margin-bottom: 16px;
+      font-family: 'DM Mono', monospace;
     }
 
-    /* CONTACT BOX */
-    .contact-box {
+    /* LAYOUT */
+    .container {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 40px 24px 80px;
+    }
+
+    /* SECTION */
+    .section {
       background: var(--surface);
       border: 1px solid var(--border);
-      border-left: 3px solid var(--teal);
-      border-radius: 0 12px 12px 0;
-      padding: 1.5rem 1.75rem;
-      margin-top: 0.75rem;
+      border-radius: var(--radius);
+      padding: 28px 32px;
+      margin-bottom: 20px;
     }
-    .contact-box p {
-      margin-bottom: 4px;
+    .section h2 {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
+    .section h2 .emoji { font-size: 18px; }
+    .section p { color: var(--text); margin-bottom: 12px; }
+    .section p:last-child { margin-bottom: 0; }
+    .section ul {
+      list-style: none;
+      padding: 0;
+      margin: 10px 0;
+    }
+    .section ul li {
+      padding: 5px 0 5px 18px;
+      position: relative;
+      color: var(--text);
+    }
+    .section ul li::before {
+      content: "·";
+      position: absolute;
+      left: 4px;
+      color: var(--accent);
+      font-weight: 700;
+    }
+    .section a { color: var(--accent); }
+
+    /* NEW / UPDATED SECTION HIGHLIGHT */
+    .section.highlight {
+      border-color: var(--accent);
+      background: var(--accent-light);
+    }
+    .section.highlight h2 { color: var(--accent); }
+    .new-tag {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      font-weight: 600;
+      background: var(--accent);
+      color: white;
+      border-radius: 4px;
+      padding: 1px 6px;
+      margin-left: 6px;
+      vertical-align: middle;
+    }
+
+    /* AD TYPES GRID */
+    .ad-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 10px;
+      margin: 14px 0;
+    }
+    .ad-chip {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 10px 14px;
+      font-size: 13px;
+      font-weight: 500;
+      text-align: center;
+    }
+    .ad-chip .ad-icon { font-size: 18px; display: block; margin-bottom: 4px; }
+
+    /* CONSENT FLOW */
+    .consent-flow {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin: 14px 0;
+    }
+    .consent-step {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      background: var(--bg);
+      border-radius: 8px;
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+    }
+    .consent-step .step-num {
+      background: var(--accent);
+      color: white;
+      border-radius: 50%;
+      width: 22px;
+      height: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .consent-step .step-text { font-size: 13.5px; line-height: 1.5; }
+
+    /* PERMISSION TAG */
+    .perm-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 6px 12px;
+      font-family: 'DM Mono', monospace;
+      font-size: 12px;
+      font-weight: 500;
+      margin: 6px 0;
+    }
+
+    /* LINKS */
+    .link-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 12px;
+    }
+    .link-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 8px 14px;
+      font-size: 13px;
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 500;
+      transition: border-color .15s;
+    }
+    .link-btn:hover { border-color: var(--accent); }
+
+    /* OPT-OUT */
+    .optout-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 10px 0;
+    }
+    .optout-item {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 10px 14px;
+      font-size: 13px;
+      flex: 1;
+      min-width: 200px;
+    }
+    .optout-item strong { display: block; margin-bottom: 2px; }
 
     /* FOOTER */
     footer {
+      text-align: center;
+      padding: 24px;
+      color: var(--muted);
+      font-size: 13px;
       border-top: 1px solid var(--border);
-      padding: 2rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      max-width: 760px;
-      margin: 0 auto;
-      gap: 1rem;
-      flex-wrap: wrap;
     }
-    .footer-left {
-      font-family: var(--mono);
-      font-size: 11px;
-      color: var(--subtle);
-    }
-    .footer-right { font-size: 12px; }
-    .footer-right a { color: var(--muted); }
-    .footer-right a:hover { color: var(--text); }
+    footer a { color: var(--accent); text-decoration: none; }
 
     @media (max-width: 600px) {
-      nav { padding: 0 1.25rem; }
-      .page-wrap { padding: 2.5rem 1.25rem 4rem; }
-      .doc-meta { flex-direction: column; gap: 0.5rem; }
+      .section { padding: 20px 18px; }
+      .hero { padding: 40px 16px 28px; }
     }
   </style>
 </head>
 <body>
 
-  <nav>
-    <a href="https://habilgur.github.io/" class="nav-logo">applendit</a>
-    <a href="https://habilgur.github.io/prayer_guide/" class="nav-back">← Prayer Guide</a>
-  </nav>
+<nav>
+  <a href="https://habilgur.github.io/">applendit</a>
+  <span class="sep">/</span>
+  <a href="https://habilgur.github.io/prayer_guide/">Prayer Guide</a>
+  <span class="sep">/</span>
+  <span style="color:var(--muted); font-size:14px;">Privacy Policy</span>
+</nav>
 
-  <main class="page-wrap">
+<div class="hero">
+  <div class="icon">🕌</div>
+  <div class="updated-badge">Updated March 2026</div>
+  <h1>Privacy Policy</h1>
+  <div class="app-name">Prayer Guide</div>
+  <div class="meta">
+    <span>Applendit · applendit@gmail.com</span>
+    <span>Effective: March 23, 2026</span>
+    <span>Last updated: March 23, 2026</span>
+  </div>
+</div>
 
-    <div class="doc-header">
-      <span class="doc-icon">🕌</span>
-      <div class="doc-title">Privacy Policy</div>
-      <div class="doc-app">Prayer Guide</div>
-      <div class="doc-meta">
-        <span>Applendit · applendit@gmail.com</span>
-        <span>Effective: March 23, 2025</span>
-        <span>Last updated: March 23, 2026</span>
+<div class="container">
+
+  <!-- INTRODUCTION -->
+  <div class="section">
+    <h2><span class="emoji">📄</span> Introduction</h2>
+    <p><strong>Prayer Guide</strong> is a free mobile application developed by <strong>Applendit (Habil Gür)</strong>. This Privacy Policy explains how we handle information when you use our app.</p>
+    <p>By using Prayer Guide, you agree to the practices described below. We are committed to protecting your privacy. We do <strong>not sell</strong> your personal data to any third party.</p>
+  </div>
+
+  <!-- ABOUT THE APP -->
+  <div class="section">
+    <h2><span class="emoji">📱</span> About the App</h2>
+    <p>Prayer Guide is an Islamic prayer companion that provides:</p>
+    <ul>
+      <li>Step-by-step guidance on how to perform daily Salah (5 daily prayers)</li>
+      <li>Wudu (ablution) instructions with illustrations</li>
+      <li>Duas (supplications) in Arabic and transliteration</li>
+      <li>Quranic Surahs (Al-Fatiha, Yasin and others)</li>
+      <li>Illustrated prayer posture guide</li>
+      <li>Essential Islamic knowledge (pillars, fard, wajib, sunnah)</li>
+      <li>Esma-ul Husna — 99 Names of Allah</li>
+      <li>Available in English, Turkish, and German</li>
+    </ul>
+    <p>The app does <strong>not require account registration or login</strong> and does not collect any personal information to function.</p>
+  </div>
+
+  <!-- INFORMATION WE COLLECT -->
+  <div class="section">
+    <h2><span class="emoji">🔍</span> Information We Collect</h2>
+    <p><strong>Personal Information:</strong> We do <strong>not</strong> collect any personally identifiable information. No name, email, phone number, or account credentials are collected or required.</p>
+    <p><strong>App Content:</strong> All prayer content (steps, duas, surahs, postures) is stored locally within the app package and is not transmitted to any server.</p>
+    <p><strong>Advertising Data (via Google AdMob):</strong> The app displays ads through Google AdMob, which may automatically collect the following to serve relevant advertisements:</p>
+    <ul>
+      <li>Device type, model, and operating system version</li>
+      <li>Android Advertising ID (Ad ID)</li>
+      <li>IP address (used for approximate location for ad targeting)</li>
+      <li>App usage interactions with ads</li>
+      <li>Language and region settings</li>
+    </ul>
+    <p>This data is collected by Google LLC and is governed by Google's own privacy policy. We do not have direct access to or control over this advertising data.</p>
+  </div>
+
+  <!-- CONSENT MANAGEMENT — NEW -->
+  <div class="section highlight">
+    <h2><span class="emoji">✅</span> Consent Management (UMP) <span class="new-tag">NEW</span></h2>
+    <p>In regions where user consent is required by law — including the <strong>European Economic Area (EEA)</strong>, the <strong>United Kingdom</strong>, and other applicable jurisdictions — the app uses <strong>Google's User Messaging Platform (UMP) SDK</strong> to request your consent before displaying personalized advertisements.</p>
+
+    <div class="consent-flow">
+      <div class="consent-step">
+        <div class="step-num">1</div>
+        <div class="step-text">On first launch, a consent form is shown explaining what data may be collected for advertising purposes.</div>
+      </div>
+      <div class="consent-step">
+        <div class="step-num">2</div>
+        <div class="step-text">You may accept personalized ads, or choose non-personalized (contextual) ads only.</div>
+      </div>
+      <div class="consent-step">
+        <div class="step-num">3</div>
+        <div class="step-text">Ads are only loaded <em>after</em> your consent decision is recorded. No advertising data is collected before consent.</div>
+      </div>
+      <div class="consent-step">
+        <div class="step-num">4</div>
+        <div class="step-text">You can withdraw or change your consent at any time through your device settings.</div>
       </div>
     </div>
 
-    <!-- 1. Introduction -->
-    <div class="policy-section">
-      <div class="section-heading"><span class="emoji">📄</span> Introduction</div>
-      <p><strong>Prayer Guide</strong> is a free mobile application developed by <strong>Applendit (Habil Gür)</strong>. This Privacy Policy explains how we handle information when you use our app.</p>
-      <p>By using Prayer Guide, you agree to the practices described below. We are committed to protecting your privacy. We do <strong>not sell</strong> your personal data to any third party.</p>
+    <p>If you are located outside a consent-required region, standard personalized ads may be served without a consent prompt, in accordance with applicable law.</p>
+  </div>
+
+  <!-- ADVERTISING -->
+  <div class="section">
+    <h2><span class="emoji">💡</span> Advertising</h2>
+    <p>Prayer Guide is free to use and supported by advertising provided by Google AdMob. The following ad formats are used in the app:</p>
+
+    <div class="ad-grid">
+      <div class="ad-chip"><span class="ad-icon">🟦</span>Banner Ads</div>
+      <div class="ad-chip"><span class="ad-icon">📺</span>Interstitial Ads</div>
+      <div class="ad-chip"><span class="ad-icon">🚀</span>App Open Ads</div>
+      <div class="ad-chip"><span class="ad-icon">🖼️</span>Native Ads</div>
     </div>
 
-    <!-- 2. About the App -->
-    <div class="policy-section">
-      <div class="section-heading"><span class="emoji">📱</span> About the App</div>
-      <p>Prayer Guide is an Islamic prayer companion that provides:</p>
-      <ul>
-        <li>Step-by-step guidance on how to perform daily Salah (5 daily prayers)</li>
-        <li>Wudu (ablution) instructions with illustrations</li>
-        <li>Duas (supplications) in Arabic and transliteration</li>
-        <li>Quranic Surahs (Al-Fatiha, Yasin and others)</li>
-        <li>Illustrated prayer posture guide</li>
-        <li>Essential Islamic knowledge (pillars, fard, wajib, sunnah)</li>
-        <li>Esma-ul Husna — 99 Names of Allah</li>
-        <li>Available in English and Turkish</li>
-      </ul>
-      <p>The app does <strong>not require account registration or login</strong> and does not collect any personal information to function.</p>
+    <p>All ads are filtered to <strong>G-rated content only</strong> using AdMob's <code>MaxAdContentRating.g</code> setting, ensuring that no adult, gambling, or otherwise inappropriate ad content is shown.</p>
+
+    <p>Displayed ads may be personalized based on your interests using data collected by Google's advertising services, subject to your consent where applicable.</p>
+
+    <div class="link-row">
+      <a class="link-btn" href="https://support.google.com/admob/answer/6128543" target="_blank">→ Google AdMob Privacy Policy</a>
+      <a class="link-btn" href="https://policies.google.com/privacy" target="_blank">→ Google Privacy Policy</a>
     </div>
 
-    <!-- 3. Data We Collect -->
-    <div class="policy-section">
-      <div class="section-heading"><span class="emoji">🔍</span> Information We Collect</div>
-      <p><strong>Personal Information:</strong> We do <strong>not</strong> collect any personally identifiable information. No name, email, phone number, or account credentials are collected or required.</p>
-      <p><strong>App Content:</strong> All prayer content (steps, duas, surahs, postures) is stored locally within the app package and is not transmitted to any server.</p>
-      <p><strong>Advertising Data (via Google AdMob):</strong> The app displays ads through Google AdMob, which may automatically collect the following to serve relevant advertisements:</p>
-      <ul>
-        <li>Device type, model, and operating system version</li>
-        <li>Android Advertising ID (Ad ID)</li>
-        <li>IP address (used for approximate location for ad targeting)</li>
-        <li>App usage interactions with ads</li>
-        <li>Language and region settings</li>
-      </ul>
-      <p>This data is collected by Google LLC and is governed by Google's own privacy policy. We do not have direct access to or control over this advertising data.</p>
-    </div>
-
-    <!-- 4. Permissions -->
-    <div class="policy-section">
-      <div class="section-heading"><span class="emoji">⚙️</span> App Permissions</div>
-      <p>Prayer Guide requests only the following permission:</p>
-      <div class="perm-list">
-        <div class="perm-tag">📶 INTERNET — Required to load and display advertisements</div>
+    <p style="margin-top:14px;">You can opt out of personalized advertising at any time through your device settings:</p>
+    <div class="optout-row">
+      <div class="optout-item">
+        <strong>🤖 Android</strong>
+        Settings → Google → Ads → Opt out of Ads Personalization
       </div>
-      <p>We do <strong>not</strong> request access to your location, camera, microphone, contacts, storage, or any other sensitive device permissions.</p>
-    </div>
-
-    <!-- 5. Advertising -->
-    <div class="policy-section">
-      <div class="section-heading"><span class="emoji">💡</span> Advertising</div>
-      <p>Prayer Guide is free to use and supported by advertising provided by Google AdMob. Displayed ads may be personalized based on your interests using data collected by Google's advertising services.</p>
-
-      <div class="admob-box">
-        <p style="margin-bottom:6px;"><strong>Google AdMob</strong></p>
-        <p style="margin-bottom:0; font-size:13.5px;">Ads are served by Google AdMob. AdMob may collect device information and advertising identifiers to deliver relevant ads.</p>
-        <div class="admob-links">
-          <a href="https://support.google.com/admob/answer/6128543" target="_blank" rel="noopener">→ Google AdMob Privacy Policy</a>
-          <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">→ Google Privacy Policy</a>
-        </div>
-      </div>
-
-      <p>You can opt out of personalized advertising at any time through your device settings:</p>
-      <ul>
-        <li><strong>Android:</strong> Settings → Google → Ads → Opt out of Ads Personalization</li>
-        <li><strong>iOS:</strong> Settings → Privacy → Advertising → Limit Ad Tracking</li>
-      </ul>
-      <p>Even after opting out, you may still see non-personalized (contextual) ads.</p>
-    </div>
-
-    <!-- 6. Local Data Storage -->
-    <div class="policy-section">
-      <div class="section-heading"><span class="emoji">💾</span> Local Data Storage</div>
-      <p>All app content and any user preferences are stored <strong>only on your device</strong>. We do not operate a backend server that stores your personal data. Nothing is uploaded or synced to a remote server.</p>
-    </div>
-
-    <!-- 7. Children -->
-    <div class="policy-section">
-      <div class="section-heading"><span class="emoji">👪</span> Children's Privacy</div>
-      <p>Prayer Guide is not directed at children under the age of 13. We do not knowingly collect personal information from children. If you are a parent or guardian and believe your child has provided personal data, please contact us and we will promptly address the issue.</p>
-    </div>
-
-    <!-- 8. Data Sharing -->
-    <div class="policy-section">
-      <div class="section-heading"><span class="emoji">🔗</span> Data Sharing &amp; Third Parties</div>
-      <p>We do not sell, rent, or share your personal information with third parties for marketing purposes. The only third-party service integrated is Google AdMob, which operates under its own privacy framework as described above.</p>
-      <p>We may disclose information if required to do so by law or to comply with a legal obligation.</p>
-    </div>
-
-    <!-- 9. Security -->
-    <div class="policy-section">
-      <div class="section-heading"><span class="emoji">🔒</span> Security</div>
-      <p>Since we do not collect or store personal data on our own servers, the risk surface is minimal. All app content is stored locally on your device and is not transmitted to any external server.</p>
-      <p>For advertising data handled by Google AdMob, security measures are governed by Google LLC.</p>
-    </div>
-
-    <!-- 10. GDPR / KVKK -->
-    <div class="policy-section">
-      <div class="section-heading"><span class="emoji">🌍</span> GDPR &amp; KVKK Compliance</div>
-      <p>For users in the <strong>European Union (EU)</strong>: We do not process personal data as a data controller. For GDPR purposes, Google acts as an independent data controller for the advertising data it collects via AdMob.</p>
-      <p>For <strong>Turkish users (KVKK)</strong>: This app complies with the Law on Protection of Personal Data No. 6698. We do not independently process personal data subject to KVKK requirements.</p>
-    </div>
-
-    <!-- 11. Changes -->
-    <div class="policy-section">
-      <div class="section-heading"><span class="emoji">📋</span> Changes to This Policy</div>
-      <p>We may update this Privacy Policy from time to time. When we do, we will update the "Last Updated" date at the top of this document. Continued use of the app after any changes constitutes your acceptance of the revised policy.</p>
-    </div>
-
-    <!-- 12. Contact -->
-    <div class="policy-section">
-      <div class="section-heading"><span class="emoji">✉️</span> Contact Us</div>
-      <p>Questions or concerns about this Privacy Policy? Reach us at:</p>
-      <div class="contact-box">
-        <p><strong>Developer:</strong> Applendit (Habil Gür)</p>
-        <p><strong>Email:</strong> <a href="mailto:applendit@gmail.com">applendit@gmail.com</a></p>
-        <p><strong>Website:</strong> <a href="https://habilgur.github.io/prayer_guide" target="_blank" rel="noopener">https://habilgur.github.io/prayer_guide</a></p>
+      <div class="optout-item">
+        <strong>🍎 iOS</strong>
+        Settings → Privacy → Advertising → Limit Ad Tracking
       </div>
     </div>
+    <p>Even after opting out, you may still see non-personalized (contextual) ads.</p>
+  </div>
 
-  </main>
+  <!-- APP PERMISSIONS -->
+  <div class="section">
+    <h2><span class="emoji">⚙️</span> App Permissions</h2>
+    <p>Prayer Guide requests only the following permission:</p>
+    <div class="perm-tag">📶 INTERNET — Required to load and display advertisements</div>
+    <p style="margin-top:10px;">We do <strong>not</strong> request access to your location, camera, microphone, contacts, storage, or any other sensitive device permissions.</p>
+  </div>
 
-  <footer>
-    <div class="footer-left">© 2025 Applendit · Habil Gür</div>
-    <div class="footer-right">
-      <a href="https://habilgur.github.io/">← Back to Applendit</a>
-    </div>
-  </footer>
+  <!-- LOCAL DATA STORAGE -->
+  <div class="section">
+    <h2><span class="emoji">💾</span> Local Data Storage</h2>
+    <p>All app content and user preferences (such as selected language) are stored <strong>only on your device</strong>. We do not operate a backend server that stores your personal data. Nothing is uploaded or synced to a remote server.</p>
+  </div>
+
+  <!-- CHILDREN'S PRIVACY -->
+  <div class="section">
+    <h2><span class="emoji">👪</span> Children's Privacy</h2>
+    <p>Prayer Guide is <strong>not directed at children under the age of 13</strong>. The app is a general-audience Islamic educational app and does not knowingly collect personal information from children. All ad content is filtered to G-rated material only.</p>
+    <p>If you are a parent or guardian and believe your child has provided personal data, please contact us at <a href="mailto:applendit@gmail.com">applendit@gmail.com</a> and we will promptly address the issue.</p>
+  </div>
+
+  <!-- DATA SHARING -->
+  <div class="section">
+    <h2><span class="emoji">🔗</span> Data Sharing & Third Parties</h2>
+    <p>We do not sell, rent, or share your personal information with third parties for marketing purposes. The only third-party service integrated is <strong>Google AdMob</strong>, which acts as an independent data controller for the advertising data it collects and which operates under its own privacy framework as described above.</p>
+    <p>We may disclose information if required to do so by law or to comply with a legal obligation.</p>
+  </div>
+
+  <!-- SECURITY -->
+  <div class="section">
+    <h2><span class="emoji">🔒</span> Security</h2>
+    <p>Since we do not collect or store personal data on our own servers, the risk surface is minimal. All app content is stored locally on your device and is not transmitted to any external server.</p>
+    <p>For advertising data handled by Google AdMob, security measures are governed by Google LLC.</p>
+  </div>
+
+  <!-- GDPR & KVKK -->
+  <div class="section">
+    <h2><span class="emoji">🌍</span> GDPR & KVKK Compliance</h2>
+    <p><strong>For users in the European Union (EU) / EEA:</strong> We do not process personal data as a data controller. For GDPR purposes, Google acts as an independent data controller for the advertising data it collects via AdMob. Where required by GDPR, we use Google's UMP SDK to obtain your consent before any advertising data collection occurs. You have the right to withdraw consent at any time.</p>
+    <p><strong>For Turkish users (KVKK):</strong> This app complies with the Law on Protection of Personal Data No. 6698. We do not independently process personal data subject to KVKK requirements. Advertising data is handled solely by Google LLC under its own data processing terms.</p>
+  </div>
+
+  <!-- CHANGES -->
+  <div class="section">
+    <h2><span class="emoji">📋</span> Changes to This Policy</h2>
+    <p>We may update this Privacy Policy from time to time. When we do, we will update the "Last Updated" date at the top of this document. Continued use of the app after any changes constitutes your acceptance of the revised policy.</p>
+  </div>
+
+  <!-- CONTACT -->
+  <div class="section">
+    <h2><span class="emoji">✉️</span> Contact Us</h2>
+    <p>Questions or concerns about this Privacy Policy? Reach us at:</p>
+    <ul>
+      <li><strong>Developer:</strong> Applendit (Habil Gür)</li>
+      <li><strong>Email:</strong> <a href="mailto:applendit@gmail.com">applendit@gmail.com</a></li>
+      <li><strong>Website:</strong> <a href="https://habilgur.github.io/prayer_guide">habilgur.github.io/prayer_guide</a></li>
+    </ul>
+  </div>
+
+</div>
+
+<footer>
+  <p>© 2026 Applendit · Habil Gür &nbsp;·&nbsp; <a href="https://habilgur.github.io/">← Back to Applendit</a></p>
+</footer>
 
 </body>
 </html>
