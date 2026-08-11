@@ -319,24 +319,40 @@
   .footer-social a{color:rgba(255,255,255,0.8);background:rgba(255,255,255,0.1);width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;}
   .footer-social svg{width:16px;height:16px;}
 
-  /* ---------- Floating WhatsApp ---------- */
+  /* ---------- Floating Buttons (WhatsApp & Instagram) ---------- */
   .float-wa{
     position:fixed;right:18px;bottom:18px;z-index:60;
     width:54px;height:54px;border-radius:50%;
     background:#25D366;display:flex;align-items:center;justify-content:center;
     box-shadow:0 8px 20px rgba(37, 211, 102, 0.4);
+    transition:transform .2s;
   }
   .float-wa svg{width:26px;height:26px;fill:#fff;}
+
+  .float-insta{
+    position:fixed;right:18px;bottom:80px;z-index:60;
+    width:54px;height:54px;border-radius:50%;
+    background:radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%);
+    display:none;align-items:center;justify-content:center;
+    box-shadow:0 8px 20px rgba(214, 36, 159, 0.35);
+    transition:transform .2s;
+  }
+  .float-insta svg{width:26px;height:26px;stroke:#fff;}
 
   /* ---------- Reveal on scroll ---------- */
   .reveal{opacity:0;transform:translateY(15px);transition:opacity .5s ease, transform .5s ease;}
   .reveal.in{opacity:1;transform:translateY(0);}
 
-  /* ---------- Responsive Mode (Kompakt Mobil) ---------- */
+  /* ---------- Responsive Mode (Kompakt Mobil & Floating Insta) ---------- */
   @media (max-width:768px){
     section{padding:36px 0;}
     .hero{padding:32px 0 24px;}
     .nav{flex-direction:column;align-items:center;text-align:center;gap:10px;}
+    
+    /* Header Instagram mobilde gizlensin, yerine yüzen buton gelsin */
+    .header-insta{display:none;}
+    .float-insta{display:flex;}
+
     .header-actions{width:100%;justify-content:center;}
     .call-btn{width:100%;justify-content:center;}
     .hero-grid{grid-template-columns:1fr;text-align:center;gap:20px;}
@@ -535,7 +551,7 @@
     </div>
   </section>
 
-  <!-- ================= BRANDS (Sadeleştirilmiş Görsel Yolları) ================= -->
+  <!-- ================= BRANDS ================= -->
   <section id="markalar" style="background:var(--bg-alt);border-top:1px solid var(--line);border-bottom:1px solid var(--line);">
     <div class="wrap">
       <div class="section-head reveal">
@@ -571,7 +587,7 @@
       <div class="guarantee-banner reveal">
         <div class="txt">
           <h3>Eski Akünüzü Teslim Edin, Anında İndirim Kazanın!</h3>
-          <p>Bizden satın aldığınız aküde garanti kapsamında bir sorun yaşarsanız, bürokrasisiz ve hızlıca birebir değişim sağlıyoruz.</p>
+          <p>Satın aldığınız aküde garanti kapsamında bir sorun yaşarsanız, bürokrasisiz ve hızlıca birebir değişim sağlıyoruz.</p>
         </div>
         <a class="btn btn-outline" href="tel:+905343844633">7/24 Bilgi Al</a>
       </div>
@@ -606,7 +622,7 @@
     </div>
   </section>
 
-<!-- ================= CONTACT ================= -->
+  <!-- ================= CONTACT ================= -->
   <section class="contact-section" id="iletisim">
     <div class="wrap">
       <div class="section-head reveal">
@@ -672,6 +688,12 @@
   </div>
 </footer>
 
+<!-- Yüzen Instagram Butonu (Mobilde Görünür) -->
+<a class="float-insta" href="https://www.instagram.com/akumarket34/" target="_blank" rel="noopener" aria-label="Instagram Sayfamız">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>
+</a>
+
+<!-- Yüzen WhatsApp Butonu -->
 <a class="float-wa" href="https://wa.me/905343844633?text=Merhaba%2C%20yolda%20kald%C4%B1m.%20Konumumu%20payla%C5%9F%C4%B1yorum%2C%20uygun%20ak%C3%BC%20fiyat%C4%B1%20ve%20geli%C5%9F%20s%C3%BCresi%20alabilir%20miyim%3F" target="_blank" rel="noopener" aria-label="7/24 WhatsApp ile yaz">
   <svg viewBox="0 0 24 24"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.29-1.39a9.9 9.9 0 0 0 4.75 1.21h.01c5.46 0 9.9-4.45 9.9-9.91C21.96 6.45 17.5 2 12.04 2zm5.8 14.06c-.24.68-1.4 1.3-1.93 1.36-.5.06-1.02.26-3.4-.71-2.87-1.17-4.71-4.05-4.86-4.24-.14-.19-1.16-1.54-1.16-2.94 0-1.4.73-2.09.99-2.38.26-.28.57-.35.76-.35h.55c.18 0 .42-.03.64.5.24.58.8 2 .87 2.14.07.14.11.31.02.5-.09.19-.14.31-.28.47-.14.16-.29.36-.42.48-.14.14-.28.29-.12.57.16.28.7 1.17 1.51 1.9 1.04.94 1.92 1.24 2.19 1.38.27.14.43.12.59-.07.16-.19.68-.79.86-1.06.18-.27.36-.22.6-.13.24.09 1.53.73 1.79.86.26.13.44.19.5.3.07.11.07.61-.17 1.29z"/></svg>
 </a>
@@ -686,9 +708,9 @@
   const statusEl = document.getElementById('liveStatusText');
   if (statusEl) {
     if (hour >= 23 || hour < 7) {
-      statusEl.innerHTML = "🌙 7/24 Nöbetçi Mobil Ekip Beklemede · Ort. Varış: 30-40 Dk";
+      statusEl.innerHTML = "🌙 7/24 Nöbetçi Mobil Ekip Beklemede · Ort. Varış: 20-30 Dk";
     } else {
-      statusEl.innerHTML = "🟢 Mobil Ekip Sahada · Ort. Varış: 25-35 Dk";
+      statusEl.innerHTML = "🟢 Mobil Ekip Sahada · Ort. Varış: 15-25 Dk";
     }
   }
 
